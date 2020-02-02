@@ -50,13 +50,11 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-0 = "Hack Nerd Font:pixelsize=9;1"
 
 modules-left = ewmh
 modules-center = spotify
-modules-right = xbacklight pulseaudio xkeyboard wlan eth battery date
+modules-right = xbacklight pulseaudio xkeyboard battery wlan eth date
 
 tray-position = right
 tray-padding = 2
@@ -83,22 +81,34 @@ label = %title:0:30:...%
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = ""
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
+format-prefix = " "
+format-prefix-foreground = #BF616A
+format-prefix-underline = #BF616A
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
+label-layout-underline = #BF616A
 
 label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+label-indicator-underline = #BF616A
 
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 5
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #B48EAD
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
 
 [module/cpu]
 type = internal/cpu
@@ -120,9 +130,10 @@ label = %percentage_used%%
 type = internal/network
 interface = wlp2s0b1
 interval = 3.0
+click-left = nm-connection-editor
 
-format-connected = <ramp-signal><label-connected>
-format-connected-underline = #9f78e1
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #B48EAD
 label-connected = %essid%
 
 format-disconnected =
@@ -136,7 +147,7 @@ ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-foreground = #B48EAD
 
 [module/eth]
 type = internal/network
@@ -166,7 +177,7 @@ time-alt = %H:%M:%S
 
 # format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-underline = #5E81AC
 
 label = %date%%time%
 
@@ -207,7 +218,7 @@ format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ffb52a
 
 format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging-underline = #EBCB8B
 
 format-full-prefix = ""
 format-full-prefix-foreground = ${colors.foreground-alt}
@@ -216,18 +227,18 @@ format-full-underline = ${self.format-charging-underline}
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-foreground = #EBCB8B
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-foreground = #ffb52a
 animation-charging-framerate = 750
 
 animation-discharging-0 = 
 animation-discharging-1 = 
 animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-foreground = #EBCB8B
 animation-discharging-framerate = 750
 
 [module/temperature]
@@ -320,6 +331,7 @@ label-active-padding = 1
 
 label-occupied = %name%
 label-occupied-background = #81A1C1
+label-occupied-underline = #81A1C1
 label-occupied-padding = 1
 
 label-urgent = %name%
@@ -339,4 +351,5 @@ interval = 1
 format-prefix = ""
 format = <label>
 exec = python $HOME/.config/polybar/scripts/polybar-spotify/spotify_status.py -t 15 -f '♫ {song} - {artist}'
-format-underline = #1db954
+format-underline = #A3BE8C
+
