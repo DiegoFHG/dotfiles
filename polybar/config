@@ -26,8 +26,55 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
+[bar/myBar2]
+monitor = ${env:MONITOR_1}
+width = 100%
+height = 23
+# offset-x = 1%
+# offset-y = 1%
+radius = 0
+fixed-center = true
+
+background = #2E3440
+foreground = #FFFFFF
+
+line-size = 2
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = "Hack Nerd Font:pixelsize=9;1"
+
+modules-left = updates-arch-combined cpu memory temperature
+modules-center = spotify
+modules-right = xbacklight pulseaudio xkeyboard battery wlan eth date
+
+tray-position = right
+tray-padding = 2
+;tray-background = #0063ff
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
+
 [bar/myBar]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR_0}
 width = 100%
 height = 23
 # offset-x = 1%
@@ -53,8 +100,8 @@ module-margin-right = 1
 font-0 = "Hack Nerd Font:pixelsize=9;1"
 
 modules-left = ewmh
-modules-center = spotify
-modules-right = xbacklight pulseaudio xkeyboard battery wlan eth date
+modules-center = xwindow 
+modules-right = 
 
 tray-position = right
 tray-padding = 2
@@ -191,7 +238,7 @@ label-volume-foreground = ${root.foreground}
 label-muted = 🔇 Muted
 label-muted-foreground = #666
 
-bar-volume-width = 5
+bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
 bar-volume-foreground-2 = #55aa55
@@ -353,3 +400,7 @@ format = <label>
 exec = python $HOME/.config/polybar/scripts/polybar-spotify/spotify_status.py -t 15 -f '♫ {song} - {artist}'
 format-underline = #A3BE8C
 
+[module/updates-arch-combined]
+type = custom/script
+exec = ~/.config/polybar/scripts/polybar-scripts/polybar-scripts/updates-arch-combined/updates-arch-combined.sh
+interval = 600
