@@ -12,11 +12,16 @@ MONITORS_NAME_ARRAY=($(echo "$MONITORS_NAME_STRING" | tr ',' '\n'))
 
 if (( "$MONITORS_COUNT" <= 1 )); then
   MONITOR_0=$MONITORS_NAME
+
+  polybar laptop &
 else
   for (( x=0; x<($MONITORS_COUNT); x++ ))
   do
     export "MONITOR_$x"="${MONITORS_NAME_ARRAY[$x]}"
   done
+
+  polybar monitor-0 &
+  polybar monitor-1 &
 fi
 
 # Launch Polybar, using default config location ~/.config/polybar/config
