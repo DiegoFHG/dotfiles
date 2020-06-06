@@ -224,7 +224,7 @@ label = %percentage_used%%
 type = internal/network
 interface = wlp2s0b1
 interval = 3.0
-click-left = nm-connection-editor
+click-left = networkmanager_dmenu
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #B48EAD
@@ -314,7 +314,7 @@ format-charging-underline = #ffb52a
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = #EBCB8B
 
-format-full-prefix = ""
+format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
