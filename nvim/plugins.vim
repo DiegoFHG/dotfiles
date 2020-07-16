@@ -20,6 +20,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('airblade/vim-rooter')
   call dein#add('unblevable/quick-scope')
   call dein#add('justinmk/vim-sneak')
+  call dein#add('dart-lang/dart-vim-plugin')
   " Writting plugins.
   call dein#add('reedes/vim-pencil')
   call dein#add('dbmrq/vim-ditto')
